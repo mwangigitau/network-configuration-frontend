@@ -1,0 +1,82 @@
+<div style="background-color: rgb(216, 215, 215); height: 100vh; display: flex;">
+  <mat-sidenav #sidenav mode="side" opened style="text-align: center; background-color: #26A9E0;">
+    <img src="../assets/logo.svg" class="img-fluid mt-4 px-3" style="width: 100px; height: fit-content;" alt="AppFrame Logo">
+    <mat-nav-list class="px-3" >
+      <a mat-list-item routerLink="dashboard" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Dashboard icon" fontIcon="dashboard"></mat-icon>
+        Dashboard
+      </a>
+      <a mat-list-item routerLink="devices" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        Devices
+      </a>
+      <a mat-list-item routerLink="configuration" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Configuration
+      </a>
+      <a mat-list-item routerLink="monitoring" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Monitoring
+      </a>
+      <a mat-list-item routerLink="reports" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Reports
+      </a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <div style="display: flex; flex-direction: column; flex: 1; overflow: auto;">
+    <mat-toolbar class="bg-light">
+      <div class="d-flex justify-content-start align-items-center" style="left: 0%;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary me-4" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">Search</button>
+      </div>
+    </mat-toolbar>
+    <div style="padding: 20px;">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+<mat-sidenav-container style="background-color: rgb(216, 215, 215); height: fit-content;">
+  <mat-sidenav #sidenav mode="side" opened style="text-align: center; background-color: #26A9E0;">
+    <img src="../assets/logo.svg" class="img-fluid mt-4 px-3" alt="AppFrame Logo">
+    <mat-nav-list class="px-3" >
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Dashboard
+      </a>
+      <a mat-list-item routerLink="/devices" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        Devices
+      </a>
+      <a mat-list-item routerLink="/configuration" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Configuration
+      </a>
+      <a mat-list-item routerLink="/monitoring" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Monitoring
+      </a>
+      <a mat-list-item routerLink="/reports" routerLinkActive="activebutton" ariaCurrentWhenActive="page" class="mt-4">
+        <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+        Reports
+      </a>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="padding: 20px;">
+    <mat-toolbar class="fixed-top bg-light">
+      <div class="d-flex justify-content-start align-items-center" style="left: 0%;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary me-4" [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">Search</button>
+      </div>
+    </mat-toolbar>
+    <div style="margin-top: 60px;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+  

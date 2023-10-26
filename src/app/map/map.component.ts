@@ -32,13 +32,16 @@ export class MapComponent implements OnInit {
     // Add markers to markersLayer
 
     const url = 'http://0.0.0.0:8080/devices/all/';
-    this.http.get<any[]>(url, {}).pipe(
+    const requestData = { database: "test", collection: "students" }; // Your request data
+
+    this.http.post<any[]>(url, requestData).pipe(
       catchError((error) => {
-        console.error('Error fetching devices:', error);
+        console.error('Error fetching monitoring objects:', error);
         return of([]);
       })
     ).subscribe(
       (response) => {
+        // console.log(response);
           for (let a = 0; a < response.length; a++) {
             var coordinates = response[a]['project_coordinates']['coordinates']
             var marker = L.marker([parseFloat(coordinates[0]), parseFloat(coordinates[1])], this.icon);

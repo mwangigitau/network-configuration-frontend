@@ -31,6 +31,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component'; 
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import { MatListModule } from '@angular/material/list';
     ConfigurationChartComponent,
     MonitoringChartComponent,
     NavComponent,
+    ConfigurationDetailsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -65,7 +68,8 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

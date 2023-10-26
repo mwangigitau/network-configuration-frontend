@@ -9,6 +9,7 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceDetailsComponent } from './device-details/device-details.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
     component: SidebarComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'configuration', component: ConfigurationComponent},
+      {path: 'configuration',component: ConfigurationComponent},
+      {path: 'configuration/:id',component: ConfigurationDetailsComponent},
       {path: 'monitoring', component: MonitoringComponent},
       {path: 'devices', component: DevicesComponent},
       {path: 'device/:id', component: DeviceDetailsComponent },

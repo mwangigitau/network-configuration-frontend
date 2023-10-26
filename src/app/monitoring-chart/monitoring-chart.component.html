@@ -1,10 +1,12 @@
 <div id="chart">
     <select class="form-select" (change)="onOptionChange($event)">
-      <option selected>All Time</option>
-      <option value="1">Last Week</option>
+      <option value="0" selected>Today</option>
+      <option value="1">This Week</option>
+      <option value="2">Last Week</option>
       <option value="2">Last Two Weeks</option>
-      <option value="3">Last Month</option>
-      <option value="4">Last Month</option>
+      <option value="2">Last Month</option>
+      <option value="2">Last Month</option>
+      <option value="6">All Time</option>
     </select>
   
     <apx-chart

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-devices',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent {
+constructor(private router: Router){
+
+}
+openPage(dest: any): void{
+  this.router.navigate([dest])
+}
 
 }

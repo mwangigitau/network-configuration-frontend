@@ -13,6 +13,7 @@ import {
   ApexXAxis,
   ApexPlotOptions
 } from "ng-apexcharts";
+import { WebsocketService } from "../websocket.service";
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,6 +28,10 @@ export type ChartOptions = {
   tooltip: ApexTooltip;
 };
 
+const uniqueIpList: any = [];
+const dateLists: any = [];
+const statusLists: any = [];
+
 @Component({
   selector: 'app-monitoring-chart',
   templateUrl: './monitoring-chart.component.html',
@@ -38,39 +43,21 @@ export class MonitoringChartComponent implements OnInit{
 
   constructor(
     private http: HttpClient,
+    private websocketService: WebsocketService
   ) {
-
+    this.websocketService.ws.addEventListener("open", (event: Event) => {
+      // this.getAllMonitoringData()
+    });    
     this.chartOptions = {
-      series: [
-        {
-          name: "Clients",
-          type: "column",
-          data: []
-        },
-        {
-          name: "Projects",
-          type: "bar",
-          data: []
-        },
-        {
-          name: "Distance",
-          type: "line",
-          data: []
-        },
-        {
-          name: "Money",
-          type: "line",
-          data: []
-        }
-      ],
+      series: [],
       chart: {
         height: 350,
         type: "line",
         stacked: false
       },
       stroke: {
-        width: [5, 5, 5, 5],
-        curve: "smooth"
+        width: [],
+        curve: "straight"
       },
       plotOptions: {
         bar: {
@@ -79,40 +66,29 @@ export class MonitoringChartComponent implements OnInit{
       },
 
       fill: {
-        opacity: [1, 1, 1, 1],
+        opacity: [],
         gradient: {
           inverseColors: false,
           shade: "light",
           type: "vertical",
           opacityFrom: 0.85,
           opacityTo: 0.55,
-          stops: [0, 100, 100, 100]
+          stops: []
         }
       },
-      labels: [
-        "01/01/2003",
-        "02/01/2003",
-        "03/01/2003",
-        "04/01/2003",
-        "05/01/2003",
-        "06/01/2003",
-        "07/01/2003",
-        "08/01/2003",
-        "09/01/2003",
-        "10/01/2003",
-        "11/01/2003"
-      ],
+      labels: [],
       markers: {
-        size: 0
+        size: 5
       },
       xaxis: {
         type: "datetime"
       },
       yaxis: {
         title: {
-          text: "Number"
+          text: "Status"
         },
-        min: 0
+        min: -1.2,
+        max: 1.2,
       },
       tooltip: {
         shared: true,
@@ -120,7 +96,7 @@ export class MonitoringChartComponent implements OnInit{
         y: {
           formatter: function(y) {
             if (typeof y !== "undefined") {
-              return y.toFixed(0) + " items";
+              return y.toFixed(0);
             }
             return y;
           }
@@ -156,18 +132,74 @@ export class MonitoringChartComponent implements OnInit{
     console.log(selectedOption)
   }
 
-  getAllMonitoringData(): void{
+  getAllMonitoringData(): void {
+    const url = 'http://0.0.0.0:8080/monitoring/all/';
+    const requestData = { database: "test", collection: "students" };
 
-    const url = 'http://0.0.0.0:8080/monitoring/all/'
-    this.http.get<any[]>(url, {headers:{"database": "test", "collection": "students"}}).pipe(
+    this.http.post<any[]>(url, requestData).pipe(
       catchError((error) => {
         console.error('Error fetching monitoring objects:', error);
         return of([]);
       })
     ).subscribe(
       (response) => {
-        console.log(response)
-        this.chartOptions.series[0].data = response
+        
+        const values = Object.values(response);
+        
+        for (const items of values) {
+          for (const item of items) {
+            const ip = item["ip address"];
+            const date = item.date;
+            const status = item.status;
+        
+            // Check if the IP address is not in the uniqueIpList; if not, add it and initialize lists
+            var index = uniqueIpList.indexOf(ip);
+            if (index === -1) {
+              uniqueIpList.push(ip);
+              dateLists.push([]);
+              statusLists.push([]);
+              // Update the index to match the newly added IP address
+              index = uniqueIpList.length - 1;
+            }
+        
+            // Initialize the sublist if it's not already defined
+            if (!dateLists[index]) {
+              dateLists[index] = [];
+            }
+            if (!statusLists[index]) {
+              statusLists[index] = [];
+            }
+        
+            // Add date and status to the respective lists
+            dateLists[index].push(date);
+            statusLists[index].push(status);
+          }
+        }
+        console.log(dateLists)
+        console.log(statusLists)
+        var qwerty: any = []
+        
+        for(const val in uniqueIpList){
+          var x: any = {}
+          x["name"] = uniqueIpList[val]
+          x["type"] = "line"
+          x["data"] = statusLists[val]
+          qwerty.push(x)
+        }
+
+        for (const val of uniqueIpList) {
+          const index = uniqueIpList.indexOf(val)
+          this.chartOptions.labels = dateLists[index];
+        }
+
+        const opacity_list = new Array(uniqueIpList.length).fill(1);
+        const width_list = new Array(uniqueIpList.length).fill(2);
+        const stops_list = new Array(uniqueIpList.length).fill(100);
+        this.chartOptions.fill.opacity = opacity_list
+        this.chartOptions.stroke.width = width_list
+        this.chartOptions.fill.gradient!.stops = stops_list
+        this.chartOptions.series = qwerty
+
       }
     );
   }
@@ -175,14 +207,16 @@ export class MonitoringChartComponent implements OnInit{
   getAllConfigurationData(): void{
 
     const url = 'http://0.0.0.0:8080/configuration/all/'
-    this.http.get<any[]>(url, {}).pipe(
+    const requestData = { database: "test", collection: "students" }; // Your request data
+    this.http.post<any[]>(url, requestData).pipe(
       catchError((error) => {
         console.error('Error fetching configuration objects:', error);
         return of([]);
       })
     ).subscribe(
       (response) => {
-        this.chartOptions.series[1].data = response
+        // console.log(response);
+        // this.chartOptions.series[1].data = response
       }
     );
   }

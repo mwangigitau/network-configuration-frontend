@@ -28,11 +28,11 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: "app-monitoring-chart",
-  templateUrl: "./monitoring-chart.component.html",
-  styleUrls: ["./monitoring-chart.component.css"],
+  selector: 'app-monitoring-ip-chart',
+  templateUrl: './monitoring-ip-chart.component.html',
+  styleUrls: ['./monitoring-ip-chart.component.css']
 })
-export class MonitoringChartComponent implements OnInit {
+export class MonitoringIpChartComponent {
   public chartOptions: ChartOptions;
   selectedOption: string = "";
   uniqueIpList: string[] = [];
@@ -40,14 +40,9 @@ export class MonitoringChartComponent implements OnInit {
   statusLists: number[][] = [];
 
   constructor(private http: HttpClient, private websocketService: WebsocketService) {
-    this.websocketService.getWebSocket().subscribe(
-      (message: any) => {
-        this.getAllMonitoringData()
-      },
-      (error: any) => {
-        console.error('WebSocket error:', error);
-      }
-    );
+    this.websocketService.ws.addEventListener("open", (event: Event) => {
+      // Implement WebSocket data processing or updates here
+    });
     this.chartOptions = {
       series: [],
       chart: {
@@ -205,8 +200,8 @@ export class MonitoringChartComponent implements OnInit {
         this.chartOptions.stroke.width = width_list
         this.chartOptions.fill.gradient!.stops = stops_list
         this.chartOptions.series = qwerty
+
       }
     );
   }
 }
-

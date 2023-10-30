@@ -1,0 +1,21 @@
+<div id="chart">
+    <select class="form-select" (change)="onOptionChange($event)">
+      <option value="" selected disabled> Select an IP Address </option>
+      <div *ngFor="let address of uniqueIpList">
+        <option value="{{address}}">{{address}}</option>
+      </div>
+    </select>
+  
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [labels]="chartOptions.labels"
+      [stroke]="chartOptions.stroke"
+      [plotOptions]="chartOptions.plotOptions"
+      [markers]="chartOptions.markers"
+      [fill]="chartOptions.fill"
+      [tooltip]="chartOptions.tooltip"
+    ></apx-chart>
+  </div>

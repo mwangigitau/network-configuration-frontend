@@ -1,1 +1,151 @@
-<p>monitoring works!</p>
+<div>
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <div class="row">
+          <div class="h4 font-weight-bold text-primary">
+            OVERVIEW
+          </div>
+
+          <!-- Total configured devices card -->
+          <div class="col-lg-3 col-md-6 py-2 px-2">
+            <div class="card">
+              <div class="card-body primary-button text-light rounded">
+                <div class="row">
+                  <div class="col-lg-8 py-3">
+                    <div class="card-title" style="font-size: x-small;">
+                      Devices Configured
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+                  </div>
+                </div>
+                <div class="card-text d-flex justify-content-center" style="font-size: x-large;" id="total_clients_card">
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Projects card -->
+          <div class="col-lg-3 col-md-6 py-2 px-2">
+            <div class="card text-primary">
+              <div class="card-body rounded">
+                <div class="row">
+                  <div class="col-lg-8 py-3">
+                    <div class="card-title" style="font-size: x-small;">
+                      Devices Monitoring
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+                  </div>
+                </div>
+                <div class="card-text d-flex justify-content-center" style="font-size: x-large;" id="total_projects_card">
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Money card -->
+          <div class="col-lg-3 col-md-6 py-2 px-2">
+            <div class="card">
+              <div class="card-body primary-button text-light rounded">
+                <div class="row">
+                  <div class="col-lg-8 py-3">
+                    <div class="card-title" style="font-size: x-small;">
+                      Devices Currently Online
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+                  </div>
+                </div>
+                <div class="card-text d-flex justify-content-center" style="font-size: x-large;" id="total_cost_card">
+                  0
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Fiber km card -->
+          <div class="col-lg-3 col-md-6 py-2 px-2">
+            <div class="card text-primary">
+              <div class="card-body rounded">
+                <div class="row">
+                  <div class="col-lg-8 py-3">
+                    <div class="card-title" style="font-size: x-small;">
+                      Devices Currently Offline
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <mat-icon aria-hidden="false" aria-label="Bashboard icon" fontIcon="dashboard"></mat-icon>
+                  </div>
+                </div>
+                <div class="card-text d-flex justify-content-center" style="font-size: x-large;" id="total_distance_card">
+                  0
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+  
+        <!-- Chart Title -->
+        <div class="h4 font-weight-bold text-primary">
+          STATISTICS
+        </div>
+
+        <!-- Chart Card -->
+        <div class="card">
+          <div class="card-body">
+            <app-monitoring-ip-chart></app-monitoring-ip-chart>
+          </div>
+        </div>   
+      </div>
+
+      <div class="col-lg-4 col-md-12">
+        <div class="h4 font-weight-bold text-primary px-2">
+          SUMMARY
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-6 px-2 py-2">
+            <div class="card">
+              <div class="card-body overflow-auto responsive-div">
+                <div class="h6 font-weight-bold text-center">
+                    UpTime Tracker
+                </div>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-12 col-md-6 px-2 py-2">
+            <div class="card">
+              <div class="card-body overflow-auto responsive-div">
+                <div class="h6 font-weight-bold text-center">
+                    DownTime Tracker
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map Title -->
+    <div class="row">
+      <div class="h4 font-weight-bold text-primary">
+        DETAILED STATISTICS
+      </div>
+
+      <!-- Map card -->
+      <div class="px-2 py-2">
+        <div class="card">
+          <div class="card-body">
+          <app-monitoring-table></app-monitoring-table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <router-outlet></router-outlet>
+  </div>

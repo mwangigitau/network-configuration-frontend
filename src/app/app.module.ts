@@ -32,7 +32,11 @@ import {MatCardModule} from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
-import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component';
+import { MonitoringTableComponent } from './monitoring-table/monitoring-table.component';
+import { AddConfigurationComponent } from './add-configuration/add-configuration.component';
+import { MonitoringIpChartComponent } from './monitoring-ip-chart/monitoring-ip-chart.component'; 
 
 
 @NgModule({
@@ -52,6 +56,9 @@ import { ConfigurationDetailsComponent } from './configuration-details/configura
     MonitoringChartComponent,
     NavComponent,
     ConfigurationDetailsComponent,
+    MonitoringTableComponent,
+    AddConfigurationComponent,
+    MonitoringIpChartComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -69,7 +76,8 @@ import { ConfigurationDetailsComponent } from './configuration-details/configura
     MatListModule,
     MatCardModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

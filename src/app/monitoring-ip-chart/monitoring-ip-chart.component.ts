@@ -40,9 +40,7 @@ export class MonitoringIpChartComponent {
   statusLists: number[][] = [];
 
   constructor(private http: HttpClient, private websocketService: WebsocketService) {
-    this.websocketService.ws.addEventListener("open", (event: Event) => {
-      // Implement WebSocket data processing or updates here
-    });
+    
     this.chartOptions = {
       series: [],
       chart: {
@@ -71,10 +69,7 @@ export class MonitoringIpChartComponent {
         },
       },
       labels:
-        [
-          "2023-10-20T15:40:12.251000",
-          "2023-10-29T15:40:57.686000",
-      ],
+        [],
       markers: {
         size: 5,
       },
@@ -85,7 +80,7 @@ export class MonitoringIpChartComponent {
         title: {
           text: "Status",
         },
-        min: -1.2,
+        min: -0.2,
         max: 1.2,
       },
       tooltip: {
@@ -105,6 +100,7 @@ export class MonitoringIpChartComponent {
 
   ngOnInit(): void {
     this.getAllMonitoringData();
+    // console.log("Unique IPs are", this.uniqueIpList)
   }
 
   public generateData(count: any, yrange: any) {
@@ -127,12 +123,12 @@ export class MonitoringIpChartComponent {
   onOptionChange(event: Event) {
     const selectedOption = (event.target as HTMLSelectElement).value;
     this.selectedOption = selectedOption;
-    console.log(selectedOption)
+    // console.log(selectedOption)
   }
 
   getAllMonitoringData(): void {
     const url = 'http://0.0.0.0:8080/monitoring/all/';
-    const requestData = { database: "test", collection: "students" };
+    const requestData = { database: "test", collection: "monitoring" };
 
     this.http.post<any[]>(url, requestData).pipe(
       catchError((error) => {

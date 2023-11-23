@@ -6,9 +6,9 @@
                 <mat-card-title> {{device.mac_address}} </mat-card-title>
                 <mat-card-subtitle class="text-dark"> {{device.type}} </mat-card-subtitle>
                 <mat-card-subtitle class="text-dark"> {{device.manufacturer}} </mat-card-subtitle>
-                <img *ngIf="device.type.toLocaleLowerCase() === 'router'" mat-card-md-image src="/assets/router.svg" alt="Router Image">
-                <img *ngIf="device.type.toLocaleLowerCase() === 'switch'" mat-card-md-image src="/assets/switch.svg" alt="Switch Image">
-                <img *ngIf="device.type.toLocaleLowerCase() === 'access point'" mat-card-md-image src="/assets/access-point.svg" alt="Access Point Image">
+                <img *ngIf="device.type.toLocaleLowerCase() === 'router'" mat-card-md-image src="/assets/images/router.svg" alt="Router Image">
+                <img *ngIf="device.type.toLocaleLowerCase() === 'switch'" mat-card-md-image src="/assets/images/switch.svg" alt="Switch Image">
+                <img *ngIf="device.type.toLocaleLowerCase() === 'access point'" mat-card-md-image src="/assets/images/access-point.svg" alt="Access Point Image">
                 <mat-card-subtitle class="text-success py-2"> Online </mat-card-subtitle>
                 <mat-card-subtitle class="text-danger py-2"> Offline </mat-card-subtitle>
               </mat-card-title-group>

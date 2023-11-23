@@ -10,6 +10,7 @@ import { DeviceDetailsComponent } from './device-details/device-details.componen
 import { ReportsComponent } from './reports/reports.component';
 import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component';
 import { AddConfigurationComponent } from './add-configuration/add-configuration.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},

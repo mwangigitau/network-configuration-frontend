@@ -1,1 +1,20 @@
-<p>monitoring-table works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">No</th>
+      <th scope="col" class="text-center">IP Address</th>
+      <th scope="col" class="text-center">Uptime</th>
+      <th scope="col" class="text-center">Downtime</th>
+      <th scope="col" class="text-center">Realtime Status</th>
+    </tr>
+  </thead>
+    
+    <tbody>
+      <tr *ngFor="let ip of ipData.entries(), let i = index">
+        <td class="text-center"> {{ i + 1 }} </td>
+        <td class="text-center"> {{ ip[0] }} </td>
+        <td class="text-center"> {{ ip[1].uptime }} </td>
+        <td class="text-center"> {{ ip[1].downtime }} </td>
+      </tr>
+    </tbody>
+  </table>

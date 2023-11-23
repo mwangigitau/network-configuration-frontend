@@ -1,7 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatInputModule} from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatCardModule} from '@angular/material/card'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper'; 
+
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,28 +31,11 @@ import { ReportsComponent } from './reports/reports.component';
 import { MapComponent } from './map/map.component';
 import { ConfigurationChartComponent } from './configuration-chart/configuration-chart.component';
 import { MonitoringChartComponent } from './monitoring-chart/monitoring-chart.component';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
-import {MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
-
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { NgApexchartsModule } from 'ng-apexcharts';
-import { NavComponent } from './nav/nav.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatCardModule} from '@angular/material/card'; 
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import {MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
 import { ConfigurationDetailsComponent } from './configuration-details/configuration-details.component';
 import { MonitoringTableComponent } from './monitoring-table/monitoring-table.component';
 import { AddConfigurationComponent } from './add-configuration/add-configuration.component';
 import { MonitoringIpChartComponent } from './monitoring-ip-chart/monitoring-ip-chart.component'; 
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -77,7 +76,8 @@ import { MonitoringIpChartComponent } from './monitoring-ip-chart/monitoring-ip-
     MatCardModule,
     HttpClientModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

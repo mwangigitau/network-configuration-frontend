@@ -27,7 +27,7 @@ export class MapComponent implements OnInit {
   icon = {
     icon: L.icon({
       iconSize: [ 40, 40 ],
-      iconUrl: '../assets/blue-pin.svg',
+      iconUrl: '../assets/images/blue-pin.svg',
     })
   };
   private markersLayer: L.LayerGroup = L.layerGroup();

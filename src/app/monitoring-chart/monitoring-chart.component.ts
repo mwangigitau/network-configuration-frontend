@@ -42,6 +42,7 @@ export class MonitoringChartComponent implements OnInit {
   constructor(private http: HttpClient, private websocketService: WebsocketService) {
     this.websocketService.getWebSocket().subscribe(
       (message: any) => {
+        console.log("Message is", message)
         this.getAllMonitoringData()
       },
       (error: any) => {
@@ -90,7 +91,7 @@ export class MonitoringChartComponent implements OnInit {
         title: {
           text: "Status",
         },
-        min: -1.2,
+        min: -0.2,
         max: 1.2,
       },
       tooltip: {
@@ -132,12 +133,12 @@ export class MonitoringChartComponent implements OnInit {
   onOptionChange(event: Event) {
     const selectedOption = (event.target as HTMLSelectElement).value;
     this.selectedOption = selectedOption;
-    console.log(selectedOption)
+    // console.log(selectedOption)
   }
 
   getAllMonitoringData(): void {
     const url = 'http://0.0.0.0:8080/monitoring/all/';
-    const requestData = { database: "test", collection: "students" };
+    const requestData = { database: "test", collection: "monitoring" };
 
     this.http.post<any[]>(url, requestData).pipe(
       catchError((error) => {

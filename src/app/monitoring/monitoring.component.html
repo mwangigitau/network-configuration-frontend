@@ -13,7 +13,7 @@
                 <div class="row">
                   <div class="col-lg-8 py-3">
                     <div class="card-title" style="font-size: x-small;">
-                      Devices Configured
+                      Routers Monitoring
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -34,7 +34,7 @@
                 <div class="row">
                   <div class="col-lg-8 py-3">
                     <div class="card-title" style="font-size: x-small;">
-                      Devices Monitoring
+                      Switches Monitoring
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -55,7 +55,7 @@
                 <div class="row">
                   <div class="col-lg-8 py-3">
                     <div class="card-title" style="font-size: x-small;">
-                      Devices Currently Online
+                      Access Points Monitoring
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -76,7 +76,7 @@
                 <div class="row">
                   <div class="col-lg-8 py-3">
                     <div class="card-title" style="font-size: x-small;">
-                      Devices Currently Offline
+                      Firewalls Monitoring
                     </div>
                   </div>
                   <div class="col-lg-4">
@@ -106,27 +106,51 @@
 
       <div class="col-lg-4 col-md-12">
         <div class="h4 font-weight-bold text-primary px-2">
-          SUMMARY
+          CHAT
         </div>
         <div class="row">
           <div class="col-lg-12 col-md-6 px-2 py-2">
-            <div class="card">
-              <div class="card-body overflow-auto responsive-div">
-                <div class="h6 font-weight-bold text-center">
-                    UpTime Tracker
+            <div class="card responsive-div">
+              <div class="card-header h6 text-center">
+                Query Llama 2
+              </div>
+          
+              <div class="card-body overflow-auto">
+                <div *ngIf="chatData">
+                  <ng-container *ngFor="let message of chatData">
+                    <ng-container *ngIf="message.type === 'sender'; else recipient_card">
+                      <div class="message sender">
+                        {{ message.message }}
+                      </div>
+                    </ng-container>
+                    <ng-template #recipient_card>
+                      <div class="message recipient">
+                        {{ message.message }}
+                      </div>
+                    </ng-template>
+                  </ng-container>
                 </div>
-            </div>
-          </div>
-          </div>
-          <div class="col-lg-12 col-md-6 px-2 py-2">
-            <div class="card">
-              <div class="card-body overflow-auto responsive-div">
-                <div class="h6 font-weight-bold text-center">
-                    DownTime Tracker
+                
+              </div>
+          
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div class="form-floating">
+                      <textarea class="form-control" placeholder="Ask questions here" #chat_message id="chat_message_textarea" style="height: 100px"></textarea>
+                      <label for="chat_message">Chat</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 col-sm-4 d-flex align-items-end">
+                    <button mat-flat-button class="primary-button" (click)="sendMessage(chat_message.value)">
+                      <mat-icon>send</mat-icon>
+                    </button>
+                  </div>
                 </div>
               </div>
+            </div>
           </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -145,7 +169,6 @@
           </div>
         </div>
       </div>
-
     </div>
     <router-outlet></router-outlet>
   </div>

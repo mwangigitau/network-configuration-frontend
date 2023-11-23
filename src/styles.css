@@ -26,20 +26,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   /* Default styles for the div */
   .responsive-div {
     width: 100%;
-    height: 200px; /* Default height for all devices */
+    height: 100vh; /* Default height for all devices */
   }
   
   /* Media Query for Large Devices (Desktops) */
   @media (min-width: 1200px) {
     .responsive-div {
-      height: 298px; /* Height for large devices */
+      height: 100vh; /* Height for large devices */
+      overflow-x: scroll;
     }
   }
   
   /* Media Query for Medium Devices (Tablets) */
   @media (min-width: 768px) and (max-width: 1199px) {
     .responsive-div {
-      height: 300px; /* Height for medium devices */
+      height: 100vh; /* Height for medium devices */
     }
   }
   
@@ -49,3 +50,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       height: 250px; /* Height for small devices */
     }
   }
+
+  .chat-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.message {
+    clear: both;
+    padding: 8px;
+    margin: 8px;
+}
+
+.sender {
+    float: right;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 10px;
+}
+
+.recipient {
+    float: left;
+    background-color: #d36c0c;
+    border-radius: 10px 10px 10px 0;
+}
+.w-30 {
+  width: 25%;
+}
+
+.h-auto {
+  height: auto;
+}
+

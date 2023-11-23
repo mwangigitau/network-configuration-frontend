@@ -4,7 +4,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceDetailsComponent } from './device-details/device-details.component';
